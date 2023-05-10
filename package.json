@@ -14,6 +14,7 @@
   "devDependencies": {
     "@types/node": "^20.1.1",
     "@types/node-telegram-bot-api": "^0.61.6",
+    "@types/stream-to-array": "^2.3.0",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^34.0.1",
@@ -23,8 +24,13 @@
     "typescript": "*"
   },
   "dependencies": {
+    "@tensorflow/tfjs": "^4.5.0",
+    "@tensorflow/tfjs-node": "^4.5.0",
     "dotenv": "^16.0.3",
+    "jpeg-js": "^0.4.4",
     "node-telegram-bot-api": "^0.61.0",
+    "nsfwjs": "^2.4.2",
+    "stream-to-array": "^2.3.0",
     "vk-io": "^4.8.3"
   }
 }
