@@ -72,7 +72,7 @@ function forceEnv (name: string): string {
   else throw Error(`Environment variable '${name}' required`)
 }
 
-void (async function main () {
+void async function main () {
   dotenv()
   const conf: Config = JSON.parse(readFileSync(
     process.env.CONFIG ?? 'config.json',
@@ -96,12 +96,12 @@ void (async function main () {
       })
   })
 
-  tg.addListener('message', ({ from, photo }) => {
-    if (!photo) return
-    photo.sort((a, b) => b.file_size! - a.file_size!)
-    void consumer.consumeTg(from!.username!, photo[0].file_id)
+  tg.addListener('photo', ({ from, photo, chat }) => {
+    if (chat.id !== conf.tg.chat_id) return
+    photo!.sort((a, b) => b.file_size! - a.file_size!)
+    void consumer.consumeTg(from!.username!, photo![0].file_id)
   })
 
   void vk.updates.start()
   void tg.startPolling()
-})()
+}()
